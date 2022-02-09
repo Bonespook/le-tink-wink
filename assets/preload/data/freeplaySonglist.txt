@@ -1,0 +1,23 @@
+Tutorial:tinky:1
+Custard:tinky:1
+Tissue:tinky:1
+Slasher:tank:1
+:noone:1
+:noone:1
+:noone:1
+---GOD--
+commencement:tinkyg:1
+all-out-assault:godgroup:1
+god-of-all-realms:tinkyg:1
+:noone:1
+:noone:1
+:noone:1
+:noone:1
+:noone:1
+:noone:1
+:noone:1
+:noone:1
+:noone:1
+--BONUS SONGS--:noone:1
+Foolhardy:tinky:1
+classic:tinky:1
