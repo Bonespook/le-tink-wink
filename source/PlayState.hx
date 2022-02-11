@@ -677,7 +677,7 @@ class PlayState extends MusicBeatState
 				{
 				FlxG.save.data.botplay = false;
 						intense = false;
-						defaultCamZoom = 0.7;
+						defaultCamZoom = 0.8;
 						curStage = 'stage';
 						var bg:FlxSprite = new FlxSprite(-650, 0).loadGraphic(Paths.image('stageback'));
 						bg.antialiasing = true;
@@ -704,31 +704,31 @@ class PlayState extends MusicBeatState
 				}
 			case 'minecraft':
 				{
-			var meat:FlxSprite = new FlxSprite(0,0);
-			meat.frames = Paths.getSparrowAtlas('redjumpscare','preload');
-				meat.setGraphicSize(Std.int(meat.width * 1.0));
-				meat.cameras = [camHUD];
-				meat.alpha = 1;
-				meat.animation.addByPrefix('boo','jumpscare',24,false);
-				meat.animation.play('boo');
-				add(meat);
-				
-				FlxG.save.data.botplay = false;
-						intense = false;
-						defaultCamZoom = 0.7;
-						curStage = 'minecraft';
-						var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stageminecraft'));
-						bg.antialiasing = true;
-						bg.scrollFactor.set(0.9, 0.9);
-						bg.active = false;
-						add(bg);
+					var meat:FlxSprite = new FlxSprite(0,0);
+					meat.frames = Paths.getSparrowAtlas('redjumpscare','preload');
+						meat.setGraphicSize(Std.int(meat.width * 1.0));
+						meat.cameras = [camHUD];
+						meat.alpha = 1;
+						meat.animation.addByPrefix('boo','jumpscare',24,false);
+						meat.animation.play('boo');
+						add(meat);
+						
+						FlxG.save.data.botplay = false;
+								intense = false;
+								defaultCamZoom = 0.7;
+								curStage = 'minecraft';
+								var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stageminecraft'));
+								bg.antialiasing = true;
+								bg.scrollFactor.set(0.9, 0.9);
+								bg.active = false;
+								add(bg);
 
 				}
 			default:
 			{
 				FlxG.save.data.botplay = false;
 						intense = false;
-					defaultCamZoom = 0.6;
+					defaultCamZoom = 0.8;
 					curStage = 'stage';
 					var bg:FlxSprite = new FlxSprite(-650, -250).loadGraphic(Paths.image('stageback'));
 					bg.antialiasing = true;
@@ -797,6 +797,7 @@ class PlayState extends MusicBeatState
 			case 'tinkyg':
 				dad.y += 130;
 			case 'tank':
+				defaultCamZoom = 0.6;
 				dad.y -= 183;
 				dad.x -= 175;
 			case 'dad':
@@ -861,6 +862,9 @@ class PlayState extends MusicBeatState
 				boyfriend.y += 220;
 				gf.x += 180;
 				gf.y += 300;
+			case 'stage':
+				boyfriend.y += 35;
+				gf.y + 10;
 		}
 
 		add(gf);
@@ -1069,13 +1073,7 @@ class PlayState extends MusicBeatState
 						{
 							camHUD.visible = true;
 							remove(blackScreen);
-							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 2.5, {
-								ease: FlxEase.quadInOut,
-								onComplete: function(twn:FlxTween)
-								{
-									startCountdown();
-								}
-							});
+							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 2.5, {ease: FlxEase.quadInOut,onComplete: function(twn:FlxTween){startCountdown();}});
 						});
 					});
 				case 'senpai':
@@ -3320,19 +3318,19 @@ class PlayState extends MusicBeatState
 		}
 	function jumpscarePopup()
 	{
-	if(PlayState.SONG.song.toLowerCase() == 'shredder'){
+		if(PlayState.SONG.song.toLowerCase() == 'shredder'){
 
-						}else{
-	var randomjump = FlxG.random.int(1,3);
-	FlxG.sound.play(Paths.sound('spookysound','shared'));
-	var scarey:FlxSprite = new FlxSprite(0,0);
-	scareyjumpy = true;
-	trace('el jumpscare fuck you' + randomjump);
-	if(randomjump == 1){scarey.frames = Paths.getSparrowAtlas('jumpscare1','preload');}
-	if(randomjump == 2){
-	//suicide jumpscare! turn off if not wanted
-	if(FlxG.save.data.disturbingimages){scarey.frames = Paths.getSparrowAtlas('jumpscare2','preload');}else{
-	scarey.frames = Paths.getSparrowAtlas('jumpscare10','preload');
+							}else{
+		var randomjump = FlxG.random.int(1,3);
+		FlxG.sound.play(Paths.sound('spookysound','shared'));
+		var scarey:FlxSprite = new FlxSprite(0,0);
+		scareyjumpy = true;
+		trace('el jumpscare fuck you' + randomjump);
+		if(randomjump == 1){scarey.frames = Paths.getSparrowAtlas('jumpscare1','preload');}
+		if(randomjump == 2){
+		//suicide jumpscare! turn off if not wanted
+		if(FlxG.save.data.disturbingimages){scarey.frames = Paths.getSparrowAtlas('jumpscare2','preload');}else{
+		scarey.frames = Paths.getSparrowAtlas('jumpscare10','preload');
 	}}
 									
 									
@@ -3748,6 +3746,8 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
+		if(curSong.toLowerCase() == 'slasher' && curStep == 544)
+			defaultCamZoom = 1;
 
 
 		// yes this updates every step.
@@ -3870,6 +3870,8 @@ class PlayState extends MusicBeatState
 		{
 			intenseSwitch();
 		}
+
+		//NICE CODING EMERSYN... YOU KNOW YOU CAN DO A SWITCH STATEMENT...
 		
 		if (curBeat % 16 == 15 && SONG.song == 'Tutorial' && dad.curCharacter == 'gf' && curBeat > 16 && curBeat < 48)
 			{

@@ -149,10 +149,10 @@ class Character extends FlxSprite
 				animation.addByPrefix('singLEFT', 'TinkyLeft00', 24);
 
 				addOffset('idle',0,0);
-				addOffset("singUP", 0, 86);
-				addOffset("singRIGHT", 0, -58);
-				addOffset("singLEFT", 79, -47);
-				addOffset("singDOWN", 0, -41);
+				addOffset("singUP", -1, 48);
+				addOffset("singRIGHT", -3, -94);
+				addOffset("singLEFT", 135, -74);
+				addOffset("singDOWN", -9, -68);
 
 				playAnim('idle');
 			case 'tinkyg':
